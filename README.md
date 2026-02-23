@@ -12,3 +12,9 @@ Enjoy!
 
 # Preparing the input files
 
+1. Short-reads
+   
+3. Phenotype
+4. Ploidy
+5. Sequencing depth
+
