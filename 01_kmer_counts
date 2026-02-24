@@ -1,0 +1,62 @@
+#!/bin/bash
+# Local execution job: kmc_count_0
+# Log files: /group/gmonroegrp2/chaehee/Pablo/pistachio_pop_analysis/02_Pistacia_all/kmeria/01_kmer_counts/count_batch_0.log,
+/group/gmonroegrp2/chaehee/Pablo/pistachio_pop_analysis/02_Pistacia_all/kmeria/01_kmer_counts/count_batch_0.err
+
+set -e  # Exit on error
+set -u  # Exit on undefined variable
+set -o pipefail  # Exit on pipe failure
+
+echo '========================================'
+echo 'K-mer Counting Batch 0 (KMC)'
+echo 'Samples: 214, 246'
+echo '========================================'
+
+# KMC k-mer counting for sample: 214
+mkdir -p /group/gmonroegrp2/chaehee/Pablo/pistachio_pop_analysis/02_Pistacia_all/kmeria/01_kmer_counts/214
+echo 'Processing sample: 214 with KMC'
+cat > /group/gmonroegrp2/chaehee/Pablo/pistachio_pop_analysis/02_Pistacia_all/kmeria/01_kmer_counts/214_fastq_list.txt << 'EOF
+'
+/group/gmonroegrp2/chaehee/Pablo/pistachio/raw_reads/all_155samples/214_R1.fq.gz
+/group/gmonroegrp2/chaehee/Pablo/pistachio/raw_reads/all_155samples/214_R2.fq.gz
+EOF
+
+kmc -k31 -t32 -m32 -b -ci5 -cs1000 \
+    @/group/gmonroegrp2/chaehee/Pablo/pistachio_pop_analysis/02_Pistacia_all/kmeria/01_kmer_counts/214_fastq_list.txt /group/g
+monroegrp2/chaehee/Pablo/pistachio_pop_analysis/02_Pistacia_all/kmeria/01_kmer_counts/214_k31 /group/gmonroegrp2/chaehee/Pablo
+/pistachio_pop_analysis/02_Pistacia_all/kmeria/01_kmer_counts/214
+
+# Sort k-mers for matrix construction
+kmc_tools -t32 transform /group/gmonroegrp2/chaehee/Pablo/pistachio_pop_analysis/02_Pistacia_all/kmeria/01_kmer_counts/214_k31
+ sort /group/gmonroegrp2/chaehee/Pablo/pistachio_pop_analysis/02_Pistacia_all/kmeria/01_kmer_counts/214_sort_k31
+
+
+# Cleanup temporary files
+rm -f /group/gmonroegrp2/chaehee/Pablo/pistachio_pop_analysis/02_Pistacia_all/kmeria/01_kmer_counts/214_fastq_list.txt
+rm -f /group/gmonroegrp2/chaehee/Pablo/pistachio_pop_analysis/02_Pistacia_all/kmeria/01_kmer_counts/214_k31.kmc_pre /group/gmonroegrp2/chaehee/Pablo/pistachio_pop_analysis/02_Pistacia_all/kmeria/01_kmer_counts/214_k31.kmc_suf
+rm -rf /group/gmonroegrp2/chaehee/Pablo/pistachio_pop_analysis/02_Pistacia_all/kmeria/01_kmer_counts/214
+echo 'Finished processing sample: 214'
+echo '----------------------------------------'
+
+# KMC k-mer counting for sample: 246
+mkdir -p /group/gmonroegrp2/chaehee/Pablo/pistachio_pop_analysis/02_Pistacia_all/kmeria/01_kmer_counts/246
+echo 'Processing sample: 246 with KMC'
+cat > /group/gmonroegrp2/chaehee/Pablo/pistachio_pop_analysis/02_Pistacia_all/kmeria/01_kmer_counts/246_fastq_list.txt << 'EOF'
+/group/gmonroegrp2/chaehee/Pablo/pistachio/raw_reads/all_155samples/246_R1.fq.gz
+/group/gmonroegrp2/chaehee/Pablo/pistachio/raw_reads/all_155samples/246_R2.fq.gz
+EOF
+
+kmc -k31 -t32 -m32 -b -ci5 -cs1000 \
+    @/group/gmonroegrp2/chaehee/Pablo/pistachio_pop_analysis/02_Pistacia_all/kmeria/01_kmer_counts/246_fastq_list.txt /group/gmonroegrp2/chaehee/Pablo/pistachio_pop_analysis/02_Pistacia_all/kmeria/01_kmer_counts/246_k31 /group/gmonroegrp2/chaehee/Pablo/pistachio_pop_analysis/02_Pistacia_all/kmeria/01_kmer_counts/246
+
+# Sort k-mers for matrix construction
+kmc_tools -t32 transform /group/gmonroegrp2/chaehee/Pablo/pistachio_pop_analysis/02_Pistacia_all/kmeria/01_kmer_counts/246_k31 sort /group/gmonroegrp2/chaehee/Pablo/pistachio_pop_analysis/02_Pistacia_all/kmeria/01_kmer_counts/246_sort_k31
+
+# Cleanup temporary files
+rm -f /group/gmonroegrp2/chaehee/Pablo/pistachio_pop_analysis/02_Pistacia_all/kmeria/01_kmer_counts/246_fastq_list.txt
+rm -f /group/gmonroegrp2/chaehee/Pablo/pistachio_pop_analysis/02_Pistacia_all/kmeria/01_kmer_counts/246_k31.kmc_pre /group/gmonroegrp2/chaehee/Pablo/pistachio_pop_analysis/02_Pistacia_all/kmeria/01_kmer_counts/246_k31.kmc_suf
+rm -rf /group/gmonroegrp2/chaehee/Pablo/pistachio_pop_analysis/02_Pistacia_all/kmeria/01_kmer_counts/246
+echo 'Finished processing sample: 246'
+echo '----------------------------------------'
+
+echo 'Batch 0 completed successfully'
