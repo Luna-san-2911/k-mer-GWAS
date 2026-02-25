@@ -1,7 +1,7 @@
 #!/bin/bash -l
-#SBATCH -J kmeria_01
-#SBATCH --output=kmeria_01-%j.output
-#SBATCH --error=kmeria_01-%j.error
+#SBATCH -J kmeria_02
+#SBATCH --output=kmeria_02-%j.output
+#SBATCH --error=kmeria_02-%j.error
 #SBATCH -t 240:00:00
 #SBATCH --partition=bmh
 #SBATCH --mail-type=ALL
