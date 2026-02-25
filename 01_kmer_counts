@@ -1,7 +1,6 @@
 #!/bin/bash
 # Local execution job: kmc_count_0
-# Log files: /group/gmonroegrp2/chaehee/Pablo/pistachio_pop_analysis/02_Pistacia_all/kmeria/01_kmer_counts/count_batch_0.log,
-/group/gmonroegrp2/chaehee/Pablo/pistachio_pop_analysis/02_Pistacia_all/kmeria/01_kmer_counts/count_batch_0.err
+# Log files: /group/gmonroegrp2/chaehee/Pablo/pistachio_pop_analysis/02_Pistacia_all/kmeria/01_kmer_counts/count_batch_0.log, /group/gmonroegrp2/chaehee/Pablo/pistachio_pop_analysis/02_Pistacia_all/kmeria/01_kmer_counts/count_batch_0.err
 
 set -e  # Exit on error
 set -u  # Exit on undefined variable
