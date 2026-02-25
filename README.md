@@ -42,11 +42,7 @@ Just follow exactly the code from KMERIA
    #Add PATH environment
    export PATH=/your_path/KMERIA/bin:/your_path/KMERIA/bimbamAsso:/your_path/KMERIA/external_tools:$PATH
 
-   
-   # For source code installations
- #  cd /your_path/KEMRIA/
- #  make && make install
- #  make clean
+
 ```
 NOTE: For some reason some commands do not work if I do not change the permissions before. As a general rule I always activate the environemnte and then do the export and chmod before running anything
 
