@@ -14,8 +14,7 @@ echo '========================================'
 # KMC k-mer counting for sample: 214
 mkdir -p /group/gmonroegrp2/chaehee/Pablo/pistachio_pop_analysis/02_Pistacia_all/kmeria/01_kmer_counts/214
 echo 'Processing sample: 214 with KMC'
-cat > /group/gmonroegrp2/chaehee/Pablo/pistachio_pop_analysis/02_Pistacia_all/kmeria/01_kmer_counts/214_fastq_list.txt << 'EOF
-'
+cat > /group/gmonroegrp2/chaehee/Pablo/pistachio_pop_analysis/02_Pistacia_all/kmeria/01_kmer_counts/214_fastq_list.txt << 'EOF'
 /group/gmonroegrp2/chaehee/Pablo/pistachio/raw_reads/all_155samples/214_R1.fq.gz
 /group/gmonroegrp2/chaehee/Pablo/pistachio/raw_reads/all_155samples/214_R2.fq.gz
 EOF
