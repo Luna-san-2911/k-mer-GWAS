@@ -18,9 +18,18 @@ echo "Starting at: $(date)"
 
 #Input is directory to fastq files
 #Output is a directory were the scripts and directories will be created, eventually they will have the files produced by the pipeline
-#Samples is a .txt file with only one column and the name of the samples, no header
+#Samples is a .txt file with only one column with the name of the samples, no header
 #Depth file should have no headers, samples in col1, depth in col2 and ploidy in col3
-#Phenotype file requires to specify col1, when you have your samples ID in col1, and the phenotype in col2
+#Phenotype file requires to specify 1, when you have your samples names in col1, and the phenotype in col2
+
+#The path you see here to kmeria_wrapper follows where I cloned the github repository
+#My output directory had memory space. Take this into account as kmer-matrices and bimbam result big files
+
+#Threads specify the number of threads for the next jobs. With 32 threads and 155 paired end WGS samples I could run the full Kmeria pipeline in 1 day
+#I reccomend using kmc as it is better for big dataset such as the one I had
+#--min-abund and --max-abund are set to filter kmers abundance. However, when using kmc --max-abund does not filter, it just counts until 1000. If you want to get rid of repetitive regions you can later edit the 03_filter step
+#As you can see trhe --pheno-col says 1. It works like this, even if in my ohentoyoe file the phenotype is in the second column and the samples names in column 1
+#Bimbam-tools was useful to run a linear mixed model gwas and is faster. If you want to use gemma you have to create .bed files which takes some time.
 
 perl /home/plunarod/KMERIA/scripts/kmeria_wrapper.pl --step all \
   --input /group/gmonroegrp2/chaehee/Pablo/pistachio/raw_reads/all_155samples \
