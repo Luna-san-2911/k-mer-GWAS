@@ -111,4 +111,33 @@ Finally the association analysis is performed, here you can specify the phenotyp
 Sweet! If you arrived to here it means that you run all the KMERIA pipeline and got the association result. 
 From here onwards I designed some scripts or modified those from 'post-gwas' from KMERIA that could be useful to further analysis and for plotting.
 
-# 06_Calculate_p_value_threshold
+# 06_Merge results
+
+You might be looking for the resultting file with the pvalues and kmers, but there are multiple .ps files due to the chunks. Thus, first we have to merge all the chunks results. You can use the script provided here (CREATE A LINK TO THE SCRIPT)
+
+# 07_Calculate_p_value_threshold
+
+You will notice that the association result file is now huge. That's why I recommend to calculate a pvalue threshold and continue further analysis with only kmers above this threshold.
+You can calculate the adequate pvalue threshold with this script (CREATE A LINK TO THE SCRIPT)
+
+# 08_Filter_kmers
+
+Given that now we know the pvalue threshold to use, we should filter the association result file to reduce it to only kmers above the chosen threshold.
+You can employ this script for that (CREATE A LINK TO THE SCRIPT)
+
+# 09_Align_kmers
+
+This is the tricky part when doing k-mer based GWAS. In SNP-GWAS we already know the chromosome and position of each variant, but in k-mer-based we only know the kmer. Thus, we should map the kmers to the reads from our samples fastq files and then align these reads to the genome. These process could be biased because of repetitive regions in the genome, and the mapping quality parameters that you chose. You can use this script as guide (LINK TO THE SCRIPT)
+
+# 10_Plot the results
+
+FINALLY! This is the last step. IF you were running all the previous steps inside an HPC, know you can copy the resulting .paf file from the alignment to your local PC. The .paf file shouln't be that big.
+
+Once you have the .paf file in your local computer you can use this R script for plotting (LINK TO THE R script)
+
+I reccomend visualizing your results as both manhattan and frequency plots. Be cautious in the interpretation and your filters of the mapping. A lazy filtering will give you multiple kmer-positions. That's why the frequency plot is useful, as it tells you were are most of the reads mapping to.
+
+k-mer-GWAS is an exploratory analysis, so take the results as that ;)
+
+# That's all folks!
+
