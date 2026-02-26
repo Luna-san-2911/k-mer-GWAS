@@ -88,14 +88,27 @@ The output matrices will be at the 02_kmer_matrices/ directory and as binary fil
 # 03_Filter_matrices
 
 As the directory 03_filtered_matrices/ says, the purpose of this step is to filter the matrices, retain only high quality kmers at a populational level.
-Description of the filtering as further notes of this step can found here (MAKE THIS A LINK TO YOUR CODE)
+Description of the filtering as further notes of this step can found here (MAKE THIS A LINK TO YOUR CODE). In my case I filtered kmers under 5 occurences and above 100. It will depend on your data and if you want to get rid of repetitive regions.
 
 You can find the filtered matrices in the 03_filtered_matrices/ directory with the same name as the matrices but with the prefix filtered_
 
 # 04_Bimbam
 
 This step transforms the filtered matrices to bimbam format, which has an allele dosage for each kmer and sample. The resulting files are binary.
+In this step I edited the .sh file and added --quantile-norm in order to normalize the allele dosage. 
 
 Inside the directory 04_bimbam/ you will find the convert_job.sh file which I describe here (MAKE THE LINK)
 
 # 05_Association
+
+This step performs PCA, kinship and the association analysis itself. For performing PCA it will sample by default 8 million kmers from all your bimbam files. From the previous step KMERIA produces multiple bimbam files as 'chunks'. It basically split the bimbam file in multiples. 
+I tested how the PCA varied by using all the kmers or just by sampling and there was no significant difference.
+In order to calculate pca and kinship, the job produces a sampling.vcf .bim .fam .bed files.
+PCA and kinship are used as covariates for the GWAS Linear mixed model
+
+Finally the association analysis is performed, here you can specify the phenotype file if you have other phenotypes to analyze. Again, -n 1 is used even if yout phenotype is in the second column of the file.
+
+Sweet! If you arrived to here it means that you run all the KMERIA pipeline and got the association result. 
+From here onwards I designed some scripts or modified those from 'post-gwas' from KMERIA that could be useful to further analysis and for plotting.
+
+# 06_Calculate_p_value_threshold
