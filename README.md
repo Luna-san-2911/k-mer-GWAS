@@ -118,7 +118,7 @@ You might be looking for the resultting file with the pvalues and kmers, but the
 # 07_Calculate_p_value_threshold
 
 You will notice that the association result file is now huge. That's why I recommend to calculate a pvalue threshold and continue further analysis with only kmers above this threshold.
-You can calculate the adequate pvalue threshold with this script (CREATE A LINK TO THE SCRIPT)
+You can calculate the adequate pvalue threshold with this sbatch script (CREATE A LINK TO THE SCRIPT) , which uses a modified R script of KMERIA and you can find it here (CREATE A LINK TO THE SCRIPT)
 
 # 08_Filter_kmers
 
