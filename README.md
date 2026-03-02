@@ -69,7 +69,7 @@ This purpose of this step is to count kmers of the size you specify in all the r
 
 kmeria_wrapper.pl will create a lot of count_batch_*.sh files inside your 01_kmer_counts/ directory. Each of this .sh files has one pair of samples, so as I had 155 samples, I had 77 files (the count starts from 0).
 
-Given this, I created a .sbatch file with a loop to submit all the .sh files. You can find it here (MAKE THIS A LINK TO YOUR CODE)
+Given this, I created a .sbatch file with a loop to submit all the .sh files. You can find it [here](https://github.com/Luna-san-2911/k-mer-GWAS/blob/main/01_count_kmers.sbatch)
 
 As the output, you will get a .kmc_pre and .kmc_surf for each sample in the 01_kmer_counts/ directory. These are binary files storing the kmer counts.
 
@@ -80,7 +80,7 @@ NOTE: If there are mismatches with sample names, the .sh files will be empty or 
 This job builds matrices from the counts produced in step 01_Count.
 
 For this step, only one .sh file was produced by kmeria_wrapper.pl which is kctm_job.sh and is located at 02_kmer_matrices/ directory.
-Further details and notes of these step can be found HERE (MAKE THIS A LINK TO YOUR CODE).
+Further details and notes of these step can be found [here](https://github.com/Luna-san-2911/k-mer-GWAS/blob/main/02_kmer_matrices.sbatch)
 In this case, and up to steo 5, the .sbatch script of each step is only for submitting.
 
 The output matrices will be at the 02_kmer_matrices/ directory and as binary files under the name sample_k31.*.bin. (it is k31 as I choose 31nt as the lenght of my kmers, the * are numbers)
@@ -88,7 +88,7 @@ The output matrices will be at the 02_kmer_matrices/ directory and as binary fil
 # 03_Filter_matrices
 
 As the directory 03_filtered_matrices/ says, the purpose of this step is to filter the matrices, retain only high quality kmers at a populational level.
-Description of the filtering as further notes of this step can found here (MAKE THIS A LINK TO YOUR CODE). In my case I filtered kmers under 5 occurences and above 100. It will depend on your data and if you want to get rid of repetitive regions.
+Description of the filtering as further notes of this step can found [here](https://github.com/Luna-san-2911/k-mer-GWAS/blob/main/03_filter_matrices.sbatch). In my case I filtered kmers under 5 occurences and above 100. It will depend on your data and if you want to get rid of repetitive regions.
 
 You can find the filtered matrices in the 03_filtered_matrices/ directory with the same name as the matrices but with the prefix filtered_
 
@@ -97,7 +97,7 @@ You can find the filtered matrices in the 03_filtered_matrices/ directory with t
 This step transforms the filtered matrices to bimbam format, which has an allele dosage for each kmer and sample. The resulting files are binary.
 In this step I edited the .sh file and added --quantile-norm in order to normalize the allele dosage. 
 
-Inside the directory 04_bimbam/ you will find the convert_job.sh file which I describe here (MAKE THE LINK)
+Inside the directory 04_bimbam/ you will find the convert_job.sh file which I describe [here](https://github.com/Luna-san-2911/k-mer-GWAS/blob/main/04_bimbam.sbatch) 
 
 # 05_Association
 
@@ -106,34 +106,34 @@ I tested how the PCA varied by using all the kmers or just by sampling and there
 In order to calculate pca and kinship, the job produces a sampling.vcf .bim .fam .bed files.
 PCA and kinship are used as covariates for the GWAS Linear mixed model
 
-Finally the association analysis is performed, here you can specify the phenotype file if you have other phenotypes to analyze. Again, -n 1 is used even if yout phenotype is in the second column of the file.
+Finally the association analysis is performed, [here](https://github.com/Luna-san-2911/k-mer-GWAS/blob/main/05_association.sbatch) you can specify the phenotype file if you have other phenotypes to analyze. Again, -n 1 is used even if yout phenotype is in the second column of the file.
 
 Sweet! If you arrived to here it means that you run all the KMERIA pipeline and got the association result. 
 From here onwards I designed some scripts or modified those from 'post-gwas' from KMERIA that could be useful to further analysis and for plotting.
 
 # 06_Merge results
 
-You might be looking for the resultting file with the pvalues and kmers, but there are multiple .ps files due to the chunks. Thus, first we have to merge all the chunks results. You can use the script provided here (CREATE A LINK TO THE SCRIPT)
+You might be looking for the resultting file with the pvalues and kmers, but there are multiple .ps files due to the chunks. Thus, first we have to merge all the chunks results. You can use the script provided [here](https://github.com/Luna-san-2911/k-mer-GWAS/blob/main/06_merging.sbatch)
 
 # 07_Calculate_p_value_threshold
 
 You will notice that the association result file is now huge. That's why I recommend to calculate a pvalue threshold and continue further analysis with only kmers above this threshold.
-You can calculate the adequate pvalue threshold with this sbatch script (CREATE A LINK TO THE SCRIPT) , which uses a modified R script of KMERIA and you can find it here (CREATE A LINK TO THE SCRIPT)
+You can calculate the adequate pvalue threshold with [this](https://github.com/Luna-san-2911/k-mer-GWAS/blob/main/07_calculate_pvalue_threshold.sbatch) sbatch script, which uses a modified R script of KMERIA and you can find it [here](https://github.com/Luna-san-2911/k-mer-GWAS/blob/main/calc_gwas_threshold_new.R)
 
 # 08_Filter_kmers
 
 Given that now we know the pvalue threshold to use, we should filter the association result file to reduce it to only kmers above the chosen threshold.
-You can employ this script for that (CREATE A LINK TO THE SCRIPT)
+You can employ [this](https://github.com/Luna-san-2911/k-mer-GWAS/blob/main/08_filter_kmers.sbatch) bash script for that. It requires [this](https://github.com/Luna-san-2911/k-mer-GWAS/blob/main/filter_pvalues_on_a_threshold.R) R script.
 
 # 09_Align_kmers
 
-This is the tricky part when doing k-mer based GWAS. In SNP-GWAS we already know the chromosome and position of each variant, but in k-mer-based we only know the kmer. Thus, we should map the kmers to the reads from our samples fastq files and then align these reads to the genome. These process could be biased because of repetitive regions in the genome, and the mapping quality parameters that you chose. You can use this script as guide (LINK TO THE SCRIPT)
+This is the tricky part when doing k-mer based GWAS. In SNP-GWAS we already know the chromosome and position of each variant, but in k-mer-based we only know the kmer. Thus, we should map the kmers to the reads from our samples fastq files and then align these reads to the genome. These process could be biased because of repetitive regions in the genome, and the mapping quality parameters that you chose. You can use [this](https://github.com/Luna-san-2911/k-mer-GWAS/blob/main/09_Align_kmers.sbatch) script as guide
 
 # 10_Plot the results
 
 FINALLY! This is the last step. IF you were running all the previous steps inside an HPC, know you can copy the resulting .paf file from the alignment to your local PC. The .paf file shouln't be that big.
 
-Once you have the .paf file in your local computer you can use this R script for plotting (LINK TO THE R script)
+Once you have the .paf file in your local computer you can use [this](https://github.com/Luna-san-2911/k-mer-GWAS/blob/main/10_Plot_results.R) R script for plotting
 
 I reccomend visualizing your results as both manhattan and frequency plots. Be cautious in the interpretation and your filters of the mapping. A lazy filtering will give you multiple kmer-positions. That's why the frequency plot is useful, as it tells you were are most of the reads mapping to.
 
