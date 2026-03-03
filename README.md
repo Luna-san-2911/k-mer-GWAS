@@ -84,7 +84,9 @@ For this step, only one .sh file was produced by kmeria_wrapper.pl which is kctm
 Further details and notes of these step can be found [here](https://github.com/Luna-san-2911/k-mer-GWAS/blob/main/02_kmer_matrices.sbatch)
 In this case, and up to steo 5, the .sbatch script of each step is only for submitting.
 
-The output matrices will be at the 02_kmer_matrices/ directory and as binary files under the name sample_k31.*.bin. (it is k31 as I choose 31nt as the lenght of my kmers, the * are numbers)
+The output matrices will be at the 02_kmer_matrices/ directory and as binary files under the name sample_k31.*.bin. (it is k31 as I choose 31nt as the lenght of my kmers, the * are numbers). If you want to see these binary files, do:
+
+``` /path_to_kmeria/kmeria kctm --convert -i matrix.0001.bin -o matrix.0001.txt -v ```
 
 # 03_Filter_matrices
 
