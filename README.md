@@ -86,7 +86,7 @@ In this case, and up to steo 5, the .sbatch script of each step is only for subm
 
 The output matrices will be at the 02_kmer_matrices/ directory and as binary files under the name sample_k31.*.bin. (it is k31 as I choose 31nt as the lenght of my kmers, the * are numbers). If you want to see these binary files, do:
 
-``` /path_to_kmeria/kmeria kctm --convert -i matrix.0001.bin -o matrix.0001.txt -v ```
+``` kmeria kctm --convert -i matrix.0001.bin -o matrix.0001.txt -v ```
 
 # 03_Filter_matrices
 
