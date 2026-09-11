@@ -38,8 +38,8 @@ Just follow exactly the code from KMERIA
    git clone https://github.com/Sh1ne111/KMERIA.git
 
    # To avoid GNU C++ Runtime Library conflicts, you can create a conda virtual environment to ensure all dependent libraries are installed correctly.
-   conda env create -n kmeriaenv
-   conda activate kmeriaenv 
+   conda env create -n kmeria
+   conda activate kmeria
 
    # htslib
    export LD_LIBRARY_PATH=/your_path/KMERIA/lib:$LD_LIBRARY_PATH
