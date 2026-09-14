@@ -39,6 +39,7 @@ Just follow exactly the code from KMERIA
 
    # To avoid GNU C++ Runtime Library conflicts, you can create a conda virtual environment to ensure all dependent libraries are installed correctly.
    # The .yml file is in the KMERIA repository, has the packages required by KMERIA to run
+   # Additionally, if you want to use KMC for kmer counting, you have to do conda install bioconda::kmc inside the environment
    conda env create -f kmeria_env.yml
    conda activate kmeria
 
