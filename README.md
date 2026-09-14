@@ -74,6 +74,8 @@ kmeria_wrapper.pl will create a lot of count_batch_*.sh files inside your 01_kme
 
 Given this, I created a .sbatch file with a loop to submit all the .sh files. You can find it [here](https://github.com/Luna-san-2911/k-mer-GWAS/blob/main/01_count_kmers.sbatch)
 
+Be aware that when using kmc the wrapper sets your min and max thresholds of kmer count in a different way. The min threshold removes the kmers under that threshols, however for the max threshold it is set as a max counter, not as a remove of kmers that have more counts than. Depending on your purpose if you want to remove those kmers you should have to edit the *.sh scripts of this step using -cx instead of -cs in kmc.
+
 As the output, you will get a .kmc_pre and .kmc_surf for each sample in the 01_kmer_counts/ directory. These are binary files storing the kmer counts.
 
 NOTE: If there are mismatches with sample names, the .sh files will be empty or have 'sample not found', double check that all your input files follow the same sample order and name.
