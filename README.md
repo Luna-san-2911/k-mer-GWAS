@@ -32,7 +32,7 @@ Great! Now that you have all the input files in the correct format we can start 
 
 # Installation
 
-Just follow exactly the code from KMERIA
+Just follow the code from KMERIA with some modifications
 ```   
    # Clone the KMERIA repository:
    git clone https://github.com/Sh1ne111/KMERIA.git
@@ -41,10 +41,13 @@ Just follow exactly the code from KMERIA
    # The .yml file is in the KMERIA repository, has the packages required by KMERIA to run
    # Additionally, if you want to use KMC for kmer counting, you have to do conda install bioconda::kmc inside the environment
    conda env create -f kmeria_env.yml
-   conda activate kmeria
+   conda activate kmeriaenv
 
-   # htslib
-   export LD_LIBRARY_PATH=/your_path/KMERIA/lib:$LD_LIBRARY_PATH
+   # htslib and environment
+   # even if I do conda activate kmeriaenv, when I do export it overrides the permissions, so the best thing to do is too specify both library paths: to your conda
+   environment lib and to the KMERIA lib
+
+   export LD_LIBRARY_PATH=/your_path/KMERIA/lib:/your_path/miniconda3/envs/kmeriaenv/lib:$LD_LIBRARY_PATH
 
    # Change Permissions
    chmod 755 /your_path/KMERIA/bin/*
@@ -56,7 +59,7 @@ Just follow exactly the code from KMERIA
 
 
 ```
-NOTE: For some reason some commands do not work if I do not change the permissions before. As a general rule I always activate the environemnte and then do the export and chmod before running anything
+NOTE: As a general rule I always activate the environemnte and then do the export and chmod before running anything, you can add this at the beginning of your .sbatch scripts.
 
 # KMERIA wrapper
 
