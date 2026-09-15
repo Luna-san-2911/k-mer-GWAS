@@ -26,7 +26,10 @@ Enjoy!
    
 5. Sequencing depth
 
-   You should have sequencing depth data from another analysis (i.e. vcf file) or just an approximate, and from this you can create this .tsv file. For this file, you must     have in  the first column your samples name, in the second the sequuencing depth per sample, no commas only decimal point, and in the third column the ploidy (i.e. 2, 4,    8). No headers needed.   
+   You should have sequencing depth data from your sequencing company, otherwise you can use this script if you are using 150bp and 31 bp kmers: (LINK HERE)
+
+
+   For this file, you must     have in  the first column your samples name, in the second the sequuencing depth per sample, no commas only decimal point, and in the third column the ploidy (i.e. 2, 4,    8). No headers needed.   
 
 Great! Now that you have all the input files in the correct format we can start with KMERIA
 
