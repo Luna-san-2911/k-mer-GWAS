@@ -98,7 +98,7 @@ The output matrices will be at the 02_kmer_matrices/ directory and as binary fil
 # 03_Filter_matrices
 
 As the directory 03_filtered_matrices/ says, the purpose of this step is to filter the matrices, retain only high quality kmers at a populational level.
-Description of the filtering as further notes of this step can found [here](https://github.com/Luna-san-2911/k-mer-GWAS/blob/main/03_filter_matrices.sbatch). In my case I filtered kmers under 5 occurences and above 100. It will depend on your data and if you want to get rid of repetitive regions.
+Description of the filtering as further notes of this step can found [here](https://github.com/Luna-san-2911/k-mer-GWAS/blob/main/03_filter_matrices.sbatch). In my case I filtered kmers under 5 occurences and above 1000. It will depend on your data and if you want to get rid of repetitive regions.
 
 You can find the filtered matrices in the 03_filtered_matrices/ directory with the same name as the matrices but with the prefix filtered_
 
