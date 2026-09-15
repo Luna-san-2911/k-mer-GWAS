@@ -101,6 +101,7 @@ As the directory 03_filtered_matrices/ says, the purpose of this step is to filt
 Description of the filtering as further notes of this step can found [here](https://github.com/Luna-san-2911/k-mer-GWAS/blob/main/03_filter_matrices.sbatch). In my case I filtered kmers under 5 occurences and above 1000. It will depend on your data and if you want to get rid of repetitive regions.
 
 You can find the filtered matrices in the 03_filtered_matrices/ directory with the same name as the matrices but with the prefix filtered_
+You can edit the -s parameter to adjust the filtering threshold. A -s 0.20 sets that kmers that are misssing in more than 20% of the samples will be removed. 
 
 # 04_Bimbam
 
