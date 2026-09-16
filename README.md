@@ -26,7 +26,7 @@ Enjoy!
    
 5. Sequencing depth
 
-   You should have sequencing depth data from your sequencing company, otherwise you can use this script if you are using 150bp and 31 bp kmers: [here](https://github.com/Luna-san-2911/k-mer-GWAS/blob/main/depth_calculation.bash)
+   You should have sequencing depth data from your sequencing company, otherwise you can use this script if you are using 150bp and 31 bp kmers: [here](https://github.com/Luna-san-2911/k-mer-GWAS/blob/main/depth_calculation.bash). However, even if you have the sequencing depth data already you must made a correction based in this formula: (L-k+1)/L. Where L is your read length and k is the kmer size chosen.
 
    For this file, you must  have in  the first column your samples name, in the second the sequuencing depth per sample, no commas only decimal point, and in the third         column the ploidy (i.e. 2, 4,    8). No headers needed.   
 
