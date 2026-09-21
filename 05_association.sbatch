@@ -15,8 +15,9 @@ set -euo pipefail
 
 echo "Starting at: $(date)"
 #Do not run this in a directory that doesn't has a lot of space, the output files will fill it
-#Run it in gmonroegrp2
+#Your file ../05_association/pca/PCA.txt could have samples mislabeles, you can correct it and rerun
 
+cd /path/to/your/05_association
 bash /group/gmonroegrp2/chaehee/Pablo/pistachio_pop_analysis/02_Pistacia_all/kmeria/05_association/asso_job.sh
 
 echo "kmeria 05 finished at: $(date)"
